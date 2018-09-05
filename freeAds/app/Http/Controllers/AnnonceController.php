@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Annonce;
 
-class UserController extends Controller
+class AnnonceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        foreach ($users as $user) {
-            echo $user->name . '<br>';
+        $annonces = Annonce::all();
+        foreach ($annonces as $annonce) {
+            echo $annonce->title . '<br>';
+            echo $annonce->content . '<br>';
+            echo $annonce->picture . '<br>';
+            echo $annonce->price . '<br>';
+//            echo $annonces->user_id . '<br>';
         }
     }
 
@@ -27,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('annonces.create');
     }
 
     /**
@@ -38,7 +42,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Annonce::create($request->all());
+        return "Annonce créé !";
     }
 
     /**
@@ -47,10 +52,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        echo 'Nom :' . $user->name . '<br>';
-        echo 'Email :' . $user->email . '<br>';
+        //
     }
 
     /**
@@ -59,9 +63,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Annonce $annonce)
     {
-        return view('edit', compact('user'));
+//        return view('annonces.edit', compact('annonces'));
+//        die(var_dump($annonce));
+        return view('annonces.edit', compact('annonce'));
     }
 
     /**
@@ -71,10 +77,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Annonce $annonce)
     {
-        $user->update($request->all());
-        return "Utilisateur modifié !";
+        //@TODO Edit update pas
+        var_dump($annonce);
+        $annonce->update($request->all());
+        return "Annonce modifié !";
     }
 
     /**
@@ -83,14 +91,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
-        return 'Utilisateur supprimé !';
-    }
-
-    public function destroyForm(User $user)
-    {
-        return view('destroy', compact('user'));
+        //
     }
 }

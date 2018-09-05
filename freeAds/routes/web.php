@@ -21,9 +21,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/home/users', 'UserController@index');
+//Route::get('/home/users', 'UserController@index');
+//Route::get('/home/users/show/{user}', 'UserController@show');
 
 
-Route::get('/edit', 'UserController@edit');
+Route::get('users/{user}/destroy', 'UserController@destroyForm');
 
 Route::resource('users', 'UserController');
+
+Route::resource('annonces', 'AnnonceController');
+//Route::get('annonces/{annonces}/edit', 'AnnonceController@edit');
+
+Route::resource('admin/posts', 'Admin\\PostsController');

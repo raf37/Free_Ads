@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLolsTable extends Migration
+class CreateAnnoncesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateLolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lols', function (Blueprint $table) {
+        Schema::create('annonces', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->nullable();
             $table->timestamps();
+            $table->string('title');
+            $table->string('content');
+            $table->string('price');
+            $table->string('picture');
         });
     }
 
@@ -26,6 +31,6 @@ class CreateLolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lols');
+        Schema::dropIfExists('annonces');
     }
 }

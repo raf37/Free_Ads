@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateLolsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +12,13 @@ class CreateLolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lols', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-        });
+            $table->string('title')->nullable();
+            $table->text('content')->nullable();
+            $table->string('category');
+            });
     }
 
     /**
@@ -26,6 +28,6 @@ class CreateLolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lols');
+        Schema::drop('posts');
     }
 }

@@ -14,7 +14,7 @@
     },
     {
       "name": "price",
-      "type": "string"
+      "type": "integer"
     },
     {
       "name": "user_id",

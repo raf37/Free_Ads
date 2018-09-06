@@ -4,7 +4,7 @@
     {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('picture') ? 'has-error' : ''}}">
-    <label for="picture" class="control-label">{{ 'Picture' }}</label>
+    <label for="picture" class="control-label">{{ 'Source img' }}</label>
     <textarea class="form-control" rows="5" name="picture" type="textarea" id="picture" >{{ $post->picture or ''}}</textarea>
     {!! $errors->first('picture', '<p class="help-block">:message</p>') !!}
 </div>
@@ -15,7 +15,7 @@
 </div>
 <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
     <label for="price" class="control-label">{{ 'Price' }}</label>
-    <input class="form-control" name="price" type="text" id="price" value="{{ $post->price or ''}}" >
+    <input class="form-control" name="price" type="number" id="price" value="{{ $post->price or ''}}" >
     {!! $errors->first('price', '<p class="help-block">:message</p>') !!}
 </div>
 {{--<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">--}}

@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title')->nullable();
             $table->text('picture')->nullable();
             $table->text('content')->nullable();
-            $table->string('price')->nullable();
+            $table->integer('price')->nullable();
             $table->integer('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             });

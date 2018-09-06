@@ -29,7 +29,6 @@ Route::get('users/{user}/destroy', 'UserController@destroyForm');
 
 Route::resource('users', 'UserController');
 
-//@TODO bizarre relation user_id faites mais pas de user_id dans la table posts
 //Route::resource('annonces', 'AnnonceController');
 //Route::get('annonces/{annonces}/edit', 'AnnonceController@edit');
 

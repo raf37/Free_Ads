@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //@TODO Gerer le mail de validation lors du register
     }
 
     /**

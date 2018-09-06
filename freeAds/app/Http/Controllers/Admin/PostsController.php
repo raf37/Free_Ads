@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -41,7 +42,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $user = User::find(Auth::id());
+//        dd($user);
+        return view('admin.posts.create', compact('user'));
     }
 
     /**

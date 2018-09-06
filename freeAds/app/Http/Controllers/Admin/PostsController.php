@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,8 +26,10 @@ class PostsController extends Controller
 
         if (!empty($keyword)) {
             $posts = Post::where('title', 'LIKE', "%$keyword%")
+                ->orWhere('picture', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
-                ->orWhere('category', 'LIKE', "%$keyword%")
+                ->orWhere('price', 'LIKE', "%$keyword%")
+                ->orWhere('user_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
             $posts = Post::latest()->paginate($perPage);
@@ -51,7 +57,9 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+			'title' => 'required|max:10'
+		]);
         $requestData = $request->all();
         
         Post::create($requestData);
@@ -97,7 +105,9 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request, [
+			'title' => 'required|max:10'
+		]);
         $requestData = $request->all();
         
         $post = Post::findOrFail($id);

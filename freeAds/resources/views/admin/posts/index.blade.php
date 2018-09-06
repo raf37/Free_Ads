@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-{{--            @include('admin.sidebar')--}}
+            {{--@include('admin.sidebar')--}}
 
             <div class="col-md-9">
                 <div class="card">
@@ -30,25 +30,33 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Title</th><th>Content</th><th>Category</th><th>Actions</th>
+                                        <th>#</th><th>Title</th><th>Picture</th><th>Content</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($posts as $item)
+                                    {{--<img src=""{{ $item->picture }}</td>--}}
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->content }}</td><td>{{ $item->category }}</td>
+                                        <td>{{ $item->title }}</td><td><img src="{{ $item->picture }}" height="42" width="42"></td><td>{{ $item->content }}</td>
                                         <td>
                                             <a href="{{ url('/admin/posts/' . $item->id) }}" title="View Post"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <?php if (Auth::id() === $item->user_id) : ?>
+
                                             <a href="{{ url('/admin/posts/' . $item->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/admin/posts' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <?php endif; ?>
+
                                             </form>
                                         </td>
                                     </tr>
+                                    <?php ?>
+                                    <?php //}?>
+
                                 @endforeach
                                 </tbody>
                             </table>

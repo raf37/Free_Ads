@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            {{--@include('admin.sidebar')--}}
+{{--            @include('admin.sidebar')--}}
 
             <div class="col-md-9">
                 <div class="card">
@@ -27,7 +27,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $post->id }}</td>
                                     </tr>
-                                    <tr><th> Title </th><td> {{ $post->title }} </td></tr><tr><th> Content </th><td> {{ $post->content }} </td></tr><tr><th> Category </th><td> {{ $post->category }} </td></tr>
+                                    <tr><th> Title </th><td> {{ $post->title }} </td></tr><tr><th> Picture </th><td> {{ $post->picture }} </td></tr><tr><th> Content </th><td> {{ $post->content }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

@@ -16,8 +16,11 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('title')->nullable();
+            $table->text('picture')->nullable();
             $table->text('content')->nullable();
-            $table->string('category');
+            $table->string('price')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             });
     }
 

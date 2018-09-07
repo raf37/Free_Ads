@@ -40,7 +40,7 @@
                                         <td>{{ $item->title }}</td><td><img src="{{ $item->picture }}" height="42" width="42"></td><td>{{ $item->content }}</td><td>{{ $item->price }}€</td><td>{{ $item->created_at }}</td><td>{{ $item->updated_at }}</td>
                                         <td>
                                             <a href="{{ url('/admin/posts/' . $item->id) }}" title="View Post"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <?php if (Auth::id() === $item->user_id) : ?>
+                                            <?php if (Auth::id() === $item x->user_id) : ?>
 
                                             <a href="{{ url('/admin/posts/' . $item->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 

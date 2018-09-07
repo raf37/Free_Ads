@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    <?php if ($user->id == Auth::id()) { ?>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -22,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <?php //@TODO le password est edit mais rerentre pas hashé et on peut edit un autre user ?>
+                                <?php //@TODO le password est edit mais rerentre pas hashé ?>
                                 <label for="password" class="col-md-4 control-label">Password</label>
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" value="{{ $user->password }}" required>
@@ -41,4 +42,5 @@
             </div>
         </div>
     </div>
+    <?php } ?>
 @endsection

@@ -7,6 +7,11 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+//        var_dump($this->middleware('auth'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -61,6 +66,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        //@TODO return le pass bcrypt
+        $user->password = bcrypt($user->password);
         return view('edit', compact('user'));
     }
 
@@ -73,7 +80,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $user->password = bcrypt($user->password); //@TODO egalité fausse maybe ac create()????
+
         $user->update($request->all());
+        var_dump($user->password);
         return "Utilisateur modifié !";
     }
 

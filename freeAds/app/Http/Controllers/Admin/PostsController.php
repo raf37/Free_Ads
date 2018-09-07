@@ -28,7 +28,6 @@ class PostsController extends Controller
 
         if (!empty($keyword)) {
             $posts = Post::where('title', 'LIKE', "%$keyword%")
-                ->orWhere('picture', 'LIKE', "%$keyword%")
                 ->orWhere('content', 'LIKE', "%$keyword%")
                 ->orWhere('price', 'LIKE', "%$keyword%")
                 ->orWhere('user_id', 'LIKE', "%$keyword%")

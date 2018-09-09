@@ -76,6 +76,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        //@TODO clear le config cache, redemmarer le serv, cache:clear
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         Mail::to($user->email)->send(new ConfirmationEmail($user));
